@@ -89,7 +89,8 @@
     )
 
 (defclass LINEA "Definición de paradas por LINEA"
-    (multislot paradas_linea [type(PARADA)])
+    (is-a OBJECT)
+    (multislot paradas_linea)
     )
 
 (definstances lineas
@@ -104,10 +105,14 @@
 	(L_270 of LINEA (paradas_linea Anchieta Estacion_Guaguas_Antigua San_Benito Marcos_Redondo Paseo_Oramas Pozo_Cabildo Republica_Argentina_1 Mercedes_4))
     )
 
-(deffunction captura_inicio "Muestreo y captura de opciones del usuario para inicio"
-    =>
+(deffunction captura_inicio "Muestreo y captura de opciones del usuario para inicio" (?numero)
     ;Muestreo de posibles inicios
-    (printout t "%2d ) %50s " Anchieta(parada) Anchieta(n_parada))
+    (open "paradas" doc_paradas "r")
+    (readline doc_paradas)
+    (readline doc_paradas)
+    (readline doc_paradas)
+    (readline doc_paradas)
+    ;(printout t "%2d ) %50s" Anchieta(parada) Anchieta(n_parada))
     ;Selección de parada de inicio
     (printout t "Seleccione parada -> ")
     (bind ?numero (read))
