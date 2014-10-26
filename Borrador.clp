@@ -105,7 +105,7 @@
 	(L_270 of LINEA (paradas_linea Anchieta Estacion_Guaguas_Antigua San_Benito Marcos_Redondo Paseo_Oramas Pozo_Cabildo Republica_Argentina_1 Mercedes_4))
     )
 
-(deffunction captura_inicio "Muestreo y captura de opciones del usuario para inicio" (?numero)
+(deffunction captura_inicio "Muestreo y captura de opciones del usuario para inicio" ()
     ;Muestreo de posibles inicios
     (open "paradas" doc_paradas "r")
     (readline doc_paradas)
