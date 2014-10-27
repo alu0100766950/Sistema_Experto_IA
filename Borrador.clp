@@ -3,7 +3,8 @@
     (role concrete)
     (slot parada (type STRING)(create-accessor read-write)) ;Nombre de la parada 
     (slot n_parada) ;Numero asignado a la parada 
-    (multislot parada_siguiente)
+    (multislot parada_siguiente (type INSTANCE)(allowed-classes PARADA))
+    (multislot nodo (type INSTANCE)(allowed-classes LINEA))
     )
 
 (definstances paradas
@@ -21,7 +22,7 @@
     (El_Rayo_1 of PARADA (parada "El Rayo 1") (n_parada 11) (parada_siguiente El_Rayo_2))
     (El_Rayo_2 of PARADA (parada "El Rayo 2") (n_parada 12) (parada_siguiente El_Pino_1))
     (El_Pino_1 of PARADA (parada "El Pino 1") (n_parada 13) (parada_siguiente El_Pino_2))
-    (El_Pino_2 of PARADA (parada "El Pino 1") (n_parada 14) (parada_siguiente Pozo_Cabildo))
+    (El_Pino_2 of PARADA (parada "El Pino 1") (n_parada 14) (parada_siguiente Pozo_Cabildo) )
     (Pozo_Cabildo of PARADA (parada "Pozo Cabildo") (n_parada 15) (parada_siguiente Enrique_Romeu Paseo_Oramas))
     (Enrique_Romeu of PARADA (parada "Enrique Romeu") (n_parada 16) (parada_siguiente Turina))
     (Turina of PARADA (parada "Turina") (n_parada 17) (parada_siguiente Granados))
@@ -106,15 +107,32 @@
 	(L_270 of LINEA (paradas_linea Anchieta Estacion_Guaguas_Antigua San_Benito Marcos_Redondo Paseo_Oramas Pozo_Cabildo Republica_Argentina_1 Mercedes_4))
     )
 
+(deffacts salida_llegada
+    (parada-requerida desconocida)
+    )
+
+
 (deffunction captura_inicio "Muestreo y captura de opciones del usuario para inicio" ()
+    (declare (salience 10))
+    ?numero <- 
     ;Muestreo de posibles inicios
-    (printout t (send [Anchieta] get-n_parada)")"(send [Anchieta] get-parada) crlf)
-    ;Selección de parada de inicio
     (do-for-all-instances ((?par1 PARADA))
-        (<> (length$ (send ?par1 get-parada_siguiente)) 0)
+        (> (length$ (send ?par1 get-parada_siguiente)) 0)
         (printout t (send ?par1 get-n_parada)")"(send ?par1 get-parada) crlf)
         )
+    ;Selección de parada de inicio
     (printout t "Seleccione parada -> ")
     (bind ?numero (read))
-    (assert (parada ?numero))
+    (assert (parada_i ?numero))
+    )
+
+(deffunction captura_fin "Muestreo y captura de opciones del usuario para fin" ()
+    ;Muestreo de posibles finales
+    (do-for-all-instances ((?par1 PARADA))
+        (printout t (send ?par1 get-n_parada)")"(send ?par1 get-parada) crlf)
+        )
+    ;Selección de parada de fin
+    (printout t "Seleccione parada a la que desea llegar-> ")
+    (bind ?numero (read))
+    (assert (parada_f ?numero))
     )
