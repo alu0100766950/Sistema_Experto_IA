@@ -32,3 +32,6 @@
         (printout t "Asi me gusta, pensamos lo mismo" crlf)
     )
 )
+
+(deftemplate hechos
+(slot penes))
