@@ -9,11 +9,11 @@
         )
     (single-slot genero 
         (type STRING)
-        (allowed-values "Accion" "Aventuras" "Rol" "Casual") ;;Continuar poniendo más generos si se desea
+        (allowed-values "Accion" "Aventuras" "Rol" "Casual" "Simuladores")
         )
     (single-slot subgenero
         (type STRING)
-        (allowed-values "FPS" "Lucha" "3PS" "Plataformas" "Fantasia") ;;Continuar poniendo todos los subgeneros juntos
+        (allowed-values "FPS" "Lucha" "3PS" "Plataformas" "Fantasia" "Terror" "MMORPG" "Puzle" "Animales" "Deporte" "MOBA" "Aventura Grafica" "Educativo" "Historico" "RPG" "Musica")
         )
     (single-slot punto_vista
         (type INTEGER)
@@ -42,7 +42,7 @@
         )
     (single-slot generacion
         (type INTEGER)
-        (allowed-values 1970 1960 1980 1990 2000)
+        (allowed-values 1970 1960 1980 1990 2000 2010)
         (create-accessor read-write)
         )
     (single-slot company
@@ -52,7 +52,7 @@
         )
     (multislot plataforma
         (type STRING)
-        (allowed-values "PC" "XBOX" "XBOX 360" "XBOX ONE" "PSX" "PS2" "PS3" "PS4" "PSP" "PSVITA" "GAMEBOY" "GAMEBOY COLOR" "GAMEBOY ADVANCE" "NES" "SNES" "N64" "NDS" "N3DS" "WII" "WII-U")
+        (allowed-values "PC" "XBOX" "XBOX 360" "XBOX ONE" "PSX" "PS2" "PS3" "PS4" "PSP" "PSVITA" "GAMEBOY" "GAMEBOY COLOR" "GAMEBOY ADVANCE" "NES" "SNES" "N64" "NDS" "N3DS" "WII" "WII-U" "IPHONE")
         (create-accessor read-write)
         )
     (single-slot duracion
@@ -89,7 +89,7 @@
     ([juego2] of JUEGO
         (nombre "World Of Warcraft")
         (genero "Rol")
-        (subgenero "MMORPEG")
+        (subgenero "MMORPG")
         (punto_vista 2)
         (multijugador "Online")
         (precio 39.95)
@@ -144,7 +144,6 @@
         (edad 18)
         (mundo_abierto 0)
         (generacion 2014)
-        (company "")
         (plataforma "PC" "XBOX 360" "XBOX ONE" "PS3" "PS4")
         (duracion 60)
         (descripcion "Una gran obra con supervivemcia, accion y exploracion")
@@ -169,7 +168,7 @@
     ([juego7] of JUEGO
         (nombre "League Of Legends")
         (genero "Rol")
-        (subgenero "Moba")
+        (subgenero "MOBA")
         (punto_vista 2)
         (multijugador "Online")
         (precio 00.00)
@@ -201,7 +200,7 @@
     ([juego9] of JUEGO
         (nombre "Tekken 6")
         (genero "Accion")
-        (subgenero "Peleas")
+        (subgenero "Lucha")
         (punto_vista 3)
         (multijugador "Local")
         (precio 49.95)
@@ -217,7 +216,7 @@
     ([juego10] of JUEGO
         (nombre "Super Mario Bros")
         (genero "Accion")
-        (subgenero "Plataforma")
+        (subgenero "Plataformas")
         (punto_vista 2)
         (multijugador "Local")
         (precio 00.00)
@@ -246,9 +245,193 @@
         (descripcion "Aventura ambientada en el universo de fantasía de El Señor de los Anillos que nos pone en la piel de un misterioso aventurero conocido como Talion, decidido a alcanzar las sombrías tierras de Mordor.")
         (pagina "http://www.3djuegos.com/17926/la-tierra-media-sombras-de-mordor/")
         )
+    ([juego12] of JUEGO
+        (nombre "Minecraft")
+        (genero "Rol")
+        (subgenero "MMORPG")
+        (punto_vista 1,2,3)
+        (multijugador "Online")
+        (precio 19.95)
+        (edad 12)
+        (mundo_abierto 1)
+        (generacion 2014)
+        (company "Mojang")
+        (plataforma "PC, XBOX 360, XBOX ONE, PS3, PS4")
+        (duracion -1)
+        (descripcion "En Minecraft se nos presenta un mundo creado a base de cubos en 3D en el que el usuario dispone de una amplia libertad para crear sus propias construcciones. El videojuego es considerado todo un fenómeno social por la cantidad de jugadores, posibilidades y versiones que presenta.")
+        (pagina "http://www.minecraft.net")
+        )
+    ([juego13] of JUEGO
+        (nombre "Ryse: Son of Rome")
+        (genero "Accion")
+        (subgenero "Lucha")
+        (punto_vista 2)
+        (multijugador "Local")
+        (precio 34.95)
+        (edad 18)
+        (mundo_abierto 1)
+        (generacion 2000)
+        (company "Koch Media")
+        (plataforma "PC, XBOX ONE")
+        (duracion 480)
+        (descripcion "La antaño exclusiva de Xbox One desarrollada por CryTek, los creadores de Crysis, desembarca en PC con soporte para resolución 4K y todos los contenidos descargables incluidos ahora en su embalaje. Un título de acción pura y dura donde libraremos encarnizadas batallas mientras luchamos contra la invasión bárbara y devolvemos la gloria a Roma.")
+        (pagina "http://www.kochmedia.com/es/")
+        )
+    ([juego14] of JUEGO
+        (nombre "Assassins Creed")
+        (genero "Aventura")
+        (subgenero "Historico")
+        (punto_vista 2)
+        (multijugador "Local, Online")
+        (precio 64.95)
+        (edad 18)
+        (mundo_abierto 1)
+        (generacion 2000)
+        (company "Ubisoft")
+        (plataforma "PC" "XBOX 360" "XBOX ONE" "PS3" "PS4")
+        (duracion -1)
+        (descripcion "Videojuego de la popular saga de acción y aventuras Assassin's Creed destinada en exclusiva a la nueva generación. El título se ambienta en el París del siglo XVIII, recreando con todo lujo de detalles escenarios reales como la Catedral de Notre Dame o el río Sena que recorre la capital gala.")
+        (pagina "http://ubisoft.com")
+        )
+    ([juego15] of JUEGO
+        (nombre "Final Fantasy VII")
+        (genero "ROL")
+        (subgenero "RPG")
+        (punto_vista 2)
+        (precio 7.00)
+        (edad 13)
+        (mundo_abierto 1)
+        (generacion 1990)
+        (company "Square Enix")
+        (plataforma "PC, PSX")
+        (duracion -1)
+        (descripcion "Revisión del clásico Final Fantasy VII que incluye abundantes mejoras como una serie de características on-line, la presencia de 36 logros, cloud-saving y algo llamado 'Character Booster', una herramienta que nos permitirá 'aumentar nuestros niveles HP, MP y Gil hasta su máximo con sólo hacer click en un botón y permitiéndonos disfrutar de la aventura'")
+        (pagina "http://eu.square-enix.com/en/home")
+        )
+    ([juego16] of JUEGO
+        (nombre "Cooking Mama")
+        (genero "Casual")
+        (subgenero "Educativo")
+        (punto_vista 1)
+        (multijugador "Local")
+        (precio 9.99)
+        (edad 0)
+        (mundo_abierto 0)
+        (generacion 2000)
+        (company "505 Games")
+        (plataforma "3DS")
+        (duracion 60)
+        (descripcion "Esta madre tiene una manera muy especial de preparar un pavo relleno, métete con ella en la cocina y ¡disfruta!")
+        (pagina "http://505games.com/")
+        )
+    ([juego17] of JUEGO
+        (nombre "Resident Evil")
+        (genero "Accion")
+        (subgenero "3PS")
+        (punto_vista 2)
+        (multijugador "Online" "Local")
+        (precio 29.99)
+        (edad 18)
+        (mundo_abierto 0)
+        (generacion 2000)
+        (company "Capcom")
+        (plataforma "PC" "XBOX 360" "PS2" "WII")
+        (duracion 840)
+        (descripcion "Saga de terror creada por Capcom, que en esta ocasión traslada su desarrollo hasta una misteriosa localización europea desde la que Leon S. Kennedy, el protagonista, deberá rescatar a la hija del presidente de los Estados Unidos de unos aldeanos aparentemente convertidos en zombis.")
+        (pagina "http://www.capcom-europe.com/")
+        )
+    ([juego18] of JUEGO
+        (nombre "Far Cry 4")
+        (genero "Accion")
+        (subgenero "FPS")
+        (punto_vista 1)
+        (multijugador "Online" "Local")
+        (precio 60.00)
+        (edad 18)
+        (mundo_abierto 1)
+        (generacion 2010)
+        (company "Ubisoft")
+        (plataforma "PC" "XBOX 360" "XBOX ONE" "PS3" "PS4")
+        (duracion 55)
+        (descripcion "cción en primera persona con enorme libertad que se ambienta en la recóndita región de Kyrat, una peligrosa y salvaje región de la cordillera del Himalaya, donde lucharemos contra el régimen de un rey déspota que se ha erigido él mismo como amo y señor de sus dominios.")
+        (pagina "http://www.farcrygame.com")
+        )
+    ([juego19] of JUEGO
+        (nombre "The Witcher Battle Arena")
+        (genero "ROL")
+        (subgenero "MOBA")
+        (punto_vista 2)
+        (precio 0.00)
+        (edad 18)
+        (mundo_abierto 1)
+        (generacion 2010)
+        (company "CD Projekt RED")
+        (plataforma "Android","Iphone","Ipad")
+        (duracion 55)
+        (descripcion "Geralt de Rivia recibe su propio MOBA con The Witcher Battle Arena. Exclusivo en plataformas móviles, invita a seis jugadores a disputar batallas por territorios en el mundo creado por Andrzej Sapkowski.")
+        (pagina "http://thewitcher.com/twba")
+        )
+    ([juego20] of JUEGO
+        (nombre "Guitar Hero")
+        (genero "Casual")
+        (subgenero "Musica")
+        (punto_vista 3)
+        (multijugador "Local", "Online")
+        (precio 26.95)
+        (edad 12)
+        (mundo_abierto 0)
+        (generacion 2000)
+        (company "Activision Blizzard")
+        (plataforma "XBOX 360" "PS3" "WII")
+        (duracion -1)
+        (descripcion "Saga Guitar Hero entre cuya imponente lista de temas musicales se encuentran los Rolling Stones, The White Stripes, Kings of Leon, Tom Petty, Bob Dylan, Johnny Cash, Santana, Vampire Weekend, Beastie Boys, Coldplay, Duran Duran, Gorrillaz, Jimmy Eat World, Muse y The Raconteurs.")
+        (pagina "http://www.guitarhero.com")
+        )
+    ([juego21] of JUEGO
+        (nombre "Valiant Herats: The Great War")
+        (genero "Accion")
+        (subgenero "Plataformas")
+        (punto_vista 2)
+        (multijugador "Local")
+        (precio 00.00)
+        (edad 12)
+        (mundo_abierto 1)
+        (generacion 2000)
+        (company "Ubisoft")
+        (plataforma "Iphone" "PC" "XBOX 360" "XBOX ONE")
+        (duracion 480)
+        (descripcion "En esta aventura puzle que mezcla elementos de sigilo seguiremos el devenir de cinco personajes de diferentes nacionalidades que intentan sobrevivir a uno de los eventos más devastadores de la historia: la Primera Guerra Mundial.")
+        (pagina "http://valianthearts.ubi.com/game/es-es/home/index.aspx")
+        )
     )
 
-;;(defmodule MAIN (export ?ALL))
+;;Definicion de funcion para mostrar por pantalla
+(defmessage-handler JUEGO imprime ()
+    (printout t "Titutlo: ")
+    (printout t ?self:nombre)
+    (printout t crlf)
+    (printout t "Genero: ")
+    (printout t ?self:genero)
+    (printout t crlf)
+    (printout t "Subgenero: ")
+    (printout t ?self:subgenero)
+    (printout t crlf)
+    (if (> (length$ ?self:multijugador) 0) then
+        (printout t ?self:multijugador)
+    else
+        (printout t "Multijugador: No")
+        )
+    (printout t crlf)
+    (printout t "Precio: ")
+    (printout t ?self:precio)
+    (printout t crlf)
+    (printout t "Descripcion: ")
+    (printout t ?self:descripcion)
+    (printout t crlf)
+    (printout t "Pagina de consulta: ")
+    (printout t ?self:pagina)
+    (printout t crlf)
+    )
 
 ;;Definicion de funciones para captar opciones del usuario
 ;;Funcion para seleccionar entre varias opciones
@@ -261,6 +444,7 @@
         )
     ?answer
     )
+
 ;;Funcion para seleccionar si o no
 (deffunction si-o-no-p (?question)
     (bind ?response (ask-question ?question si no s n))
@@ -268,11 +452,8 @@
         then TRUE 
         else FALSE)
     )
+
 ;;Definicion de reglas
-;;(defmodule preguntas_definicion "Modulo de preguntas tipo de usuario"
-;;  (import MAIN ?ALL)
-;;  (export ?ALL)
-;;  )
 
 (deftemplate genero_usuario
     (slot gen)
@@ -301,7 +482,7 @@
     (if (or (eq ?a Aventura)(eq ?a aventura))
     then
         (modify ?g (gen ?a))
-        (modify ?sg (subgen (ask-question "Seleccione el subgenero deseado (Fantasia)" Fantasia fantasia)))
+        (modify ?sg (subgen (ask-question "Seleccione el subgenero deseado (Fantasia) -> " Fantasia fantasia)))
         )
     )
 
@@ -334,19 +515,19 @@
     =>
     (if (si-o-no-p "Desea que sue juego posea multijugador (s/n) -> ") then
         (bind ?a (ask-question "Selccione modo multijugador (Online|Local) -> " online local Online Local))
-        (if (or(eq a? local)(eq a? Local)) then
-            (if(si-o-no-p "Desea que su juego posea tambien multijugador Online (s/n) -> ") then
+        (if (or(eq a? "local")(eq a? "Local")) then
+            (if (si-o-no-p "Desea que su juego posea tambien multijugador Online (s/n) -> ") then
                 (modify ?m (mj Local Online))
                 )
             else
                 (modify ?m (mj Local))
-            )
         else
             (if(si-o-no-p "Desea que su juego posea tambien multijugador Local (s/n) -> ") then
                 (modify ?m (mj Local Online))
                 )
             else
                 (modify ?m (mj Online))
+            )
         )
     )
 
@@ -362,7 +543,117 @@
     (declare (salience 7))
     ?p <- (precio (pc desconocido))
     =>
-    (printout t "Cuanto, dinero esta dispuesto a gastarse? -> ")
+    (printout t "Cuanto dinero esta dispuesto a gastarse? -> ")
     (bind ?a (read))
     (modify ?p (pc ?a))
+    )
+
+(deftemplate edad
+    (slot ed)
+    )
+
+(deffacts edad_fact
+    (edad (ed desconocido))
+    )
+
+(defrule seleccion_edad
+    (declare (salience 6))
+    ?e <- (edad (ed desconocido))
+    =>
+    (bind ?a (ask-question "Seleccione la edad recomendada para su jeugo (0|3|12|16|18) -> " 0 3 12 16 18))
+    (modify ?e (ed ?a))
+    )
+
+(deftemplate mundo
+    (slot ma)
+    )
+
+(deffacts mundo_fact
+    (mundo (ma desconocido))
+    )
+
+(defrule seleccion_mundo
+    (declare (salience 5))
+    ?m <- (mundo (ma desconocido))
+    =>
+    (if (si-o-no-p "Desea que su juego tenga opcion de punto abierto? (s/n) -> ") then
+            (modify ?m (ma 1))
+        else
+            (modify ?m (ma 0))
+        )
+    )
+
+(deftemplate generacion
+    (slot ge)
+    )
+
+(deffacts generacion_fact
+    (generacion (ge desconocido))
+    )
+
+(defrule seleccion_generacion
+    (declare (salience 4))
+    ?g <- (generacion (ge desconocido))
+    =>
+    (bind ?a (ask-question "Seleccione la generacion de juegos que desea (1970s|1980s|1990s|2000s|2010s) -> " 1970 1980 1990 2000 2010))
+    (modify ?g (ge ?a))
+    )
+
+(deftemplate company
+    (slot com)
+    )
+
+(deffacts company_fact
+    (company (com desconocido))
+    )
+
+(defrule seleccion_company
+    (declare (salience 3))
+    ?c <- (company (com desconocido))
+    =>
+    (bind ?a (ask-question "Introduzca una compañia valida (Utilice _ para representar los espacios) -> " SEGA Capcom Electronic_Arts Rockstar_Games Nintendo Ubisoft Sony Konami Activision Blizzard Naughty_Dog Square_Enix Valve Bethesda 2K Monolith))
+    (modify ?c (com ?a))
+    )
+
+(deftemplate plataforma
+    (slot plat)
+    )
+
+(deffacts plataforma_fact
+    (plataforma (plat desconocido))
+    )
+
+(defrule seleccion_plataforma
+    (declare (salience 2))
+    ?p <- (plataforma (plat desconocido))
+    =>
+    (bind ?a (ask-question "Introduzca la plataforma para su juego (Utilice _ para representar los espacios) -> " PC XBOX XBOX_360 XBOX_ONE PSX PS2 PS3 PS4 PSP PSVITA GAMEBOY GAMEBOY_COLOR GAMEBOY_ADVANCE NES SNES N64 NDS N3DS WII WII-U IPHONE))
+    (modify ?p (plat ?a))
+    )
+
+
+(deftemplate duracion
+    (slot dur)
+    )
+
+(deffacts duracion_fact
+    (duracion (dur desconocido))
+    )
+
+(defrule seleccion_duracion
+    (declare (salience 1))
+    ?d <- (duracion (dur desconocido))
+    =>
+    (printout t "Introduzca la duracion que le gustaria que tuviera su juego -> ")
+    (bind ?a (read))
+    (modify ?d (dur ?a))
+    )
+
+(defrule impresion_final
+    (precio(pc ?p))
+    =>
+    (do-for-all-instances ((?ju1 JUEGO))
+        (<= (send ?ju1 get-precio) ?p)
+        (send ?ju1 imprime)
+        )
     )
