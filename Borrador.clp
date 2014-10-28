@@ -87,6 +87,8 @@
         )
     )
 
+;;(defmodule MAIN (export ?ALL))
+
 ;;Definicion de funciones para captar opciones del usuario
 ;;Funcion para seleccionar entre varias opciones
 (deffunction ask-question (?question $?allowed-values)
@@ -106,11 +108,10 @@
         else FALSE)
     )
 ;;Definicion de reglas
-(defmodule MAIN (export ?ALL))
-(defmodule preguntas_definicion "Modulo de preguntas tipo de usuario"
-  (import MAIN ?ALL)
-  (export ?ALL)
-  )
+;;(defmodule preguntas_definicion "Modulo de preguntas tipo de usuario"
+;;  (import MAIN ?ALL)
+;;  (export ?ALL)
+;;  )
 
 (deftemplate genero_usuario
     (slot gen)
@@ -130,15 +131,16 @@
     ?g <- (genero_usuario (gen desconocido))
     ?sg <- (subgenero_usuario(subgen desconocido))
     =>
-    (if (eq (ask-question "Seleccione el genero deseado" Accion Aventura Rol Casual) Accion)
+    (bind ?a (ask-question "Seleccione el genero deseado (Accion|Aventura|Rol|Casual) -> " Accion Aventura Rol Casual accion aventura rol casual))
+    (if (or (eq ?a Accion)(eq ?a accion))
     then
         (modify ?g (gen Accion))
-        (modify ?sg (subgen (ask-question "Seleccione el subgenero deseado" FPS 3PS Plataformas Lucha)))
+        (modify ?sg (subgen (ask-question "Seleccione el subgenero deseado (FPS|3PS|Plataformas|Lucha) -> " FPS 3PS Plataformas Lucha fps 3ps plataformas lucha)))
         )
-    (if (eq (ask-question "Seleccione el genero deseado" Accion Aventura Rol Casual) Aventura)
+    (if (or (eq ?a Aventura)(eq ?a aventura))
     then
         (modify ?g (gen Aventura))
-        (modify ?sg (subgen (ask-question "Seleccione el subgenero deseado" Fantasia)))
+        (modify ?sg (subgen (ask-question "Seleccione el subgenero deseado (Fantasia)" Fantasia fantasia)))
         )
     )
 
