@@ -20,9 +20,10 @@
         (allowed-values 1 2 3 4) ;;1 = primera persona 2 = tercera persona 3 = vista desde el cielo (Poner este para tetris, pacman y demas) 4 = vista isometrica
         (create-accessor read-write)
         )
-    (single-slot multijugador
+    (multislot multijugador
         (type STRING)
         (allowed-values "Online" "Local")
+        (cardinality 0 1)
         (create-accessor read-write)
         )
     (single-slot precio
@@ -170,7 +171,7 @@
         (genero "Rol")
         (subgenero "Moba")
         (punto_vista 2)
-        (mutijugador "Online")
+        (multijugador "Online")
         (precio 00.00)
         (edad 13)
         (mundo_abierto 0)
@@ -309,12 +310,59 @@
     )
 
 (deffacts punto_vista_fact
-    (pv_usuario (pv_u desconocido))
+    (punto_vista (pv desconocido))
     )
 
 (defrule seleccion_PV
-    (declare (salience 10))
-    ?p <- (pv_usuario (pv_u desconocido))
+    (declare (salience 9))
+    ?p <- (punto_vista (pv desconocido))
     =>
-    (modify ?p (pv_usuario (ask-question "Seleccione punto de vista deseado 1)1ª 2)3ª 3)Vista aerea 4)Isometrica")))
+    (modify ?p (pv (ask-question "Seleccione punto de vista deseado 1)1ª 2)3ª 3)Vista aerea 4)Isometrica -> " 1 2 3 4)))
+    )
+
+(deftemplate multi
+    (multislot mj)
+    )
+
+(deffacts multi_fact
+    (multi (mj desconocido))
+    )
+
+(defrule seleccion_multi
+    (declare (salience 8))
+    ?m <- (multi (mj desconocido))
+    =>
+    (if (si-o-no-p "Desea que sue juego posea multijugador (s/n) -> ") then
+        (bind ?a (ask-question "Selccione modo multijugador (Online|Local) -> " online local Online Local))
+        (if (or(eq a? local)(eq a? Local)) then
+            (if(si-o-no-p "Desea que su juego posea tambien multijugador Online (s/n) -> ") then
+                (modify ?m (mj Local Online))
+                )
+            else
+                (modify ?m (mj Local))
+            )
+        else
+            (if(si-o-no-p "Desea que su juego posea tambien multijugador Local (s/n) -> ") then
+                (modify ?m (mj Local Online))
+                )
+            else
+                (modify ?m (mj Online))
+        )
+    )
+
+(deftemplate precio
+    (slot pc)
+    )
+
+(deffacts precio_fact
+    (precio (pc desconocido))
+    )
+
+(defrule seleccion_precio
+    (declare (salience 7))
+    ?p <- (precio (pc desconocido))
+    =>
+    (printout t "Cuanto, dinero esta dispuesto a gastarse? -> ")
+    (bind ?a (read))
+    (modify ?p (pc ?a))
     )
