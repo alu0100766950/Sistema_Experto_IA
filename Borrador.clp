@@ -1,5 +1,3 @@
-;;Para sacar la información de los juegos http://www.3djuegos.com/ está que te cagas
-
 (defclass JUEGO "Definición de la clase JUEGO"
     (is-a USER)
     (role concrete)
@@ -10,24 +8,25 @@
     (single-slot genero 
         (type STRING)
         (allowed-values "Accion" "Aventuras" "Rol" "Casual" "Simuladores")
+        (create-accessor read-write)
         )
     (single-slot subgenero
         (type STRING)
-        (allowed-values "FPS" "Lucha" "3PS" "Plataformas" "Fantasia" "Terror" "MMORPG" "Puzle" "Animales" "Deporte" "MOBA" "Aventura Grafica" "Educativo" "Historico" "RPG" "Musica")
+        (allowed-values "FPS" "Lucha" "3PS" "Plataformas" "Fantasia" "Terror" "MMORPG" "Puzle" "Animales" "Deporte" "MOBA" "Aventura_Grafica" "Educativo" "Historico" "RPG" "Musica" "RTS" "Carreras")
+        (create-accessor read-write)
         )
     (single-slot punto_vista
         (type INTEGER)
         (allowed-values 1 2 3 4) ;;1 = primera persona 2 = tercera persona 3 = vista desde el cielo (Poner este para tetris, pacman y demas) 4 = vista isometrica
         (create-accessor read-write)
         )
-    (multislot multijugador
+    (single-slot multijugador
         (type STRING)
-        (allowed-values "Online" "Local")
-        (cardinality 0 1)
+        (allowed-values "Online" "Local" "No" "Ambos")
         (create-accessor read-write)
         )
     (single-slot precio
-        (type FLOAT)
+        (type NUMBER)
         (create-accessor read-write)
         )
     (single-slot edad
@@ -47,12 +46,11 @@
         )
     (single-slot company
         (type STRING)
-        (allowed-values "SEGA" "Capcom" "Electronic Arts" "Rockstar Games" "Nintendo" "Ubisoft" "Sony" "Konami" "Activision" "Blizzard" "Naughty Dog" "Square Enix" "Valve" "Bethesda" "2K" "Monolith")
         (create-accessor read-write)
         )
     (multislot plataforma
         (type STRING)
-        (allowed-values "PC" "XBOX" "XBOX 360" "XBOX ONE" "PSX" "PS2" "PS3" "PS4" "PSP" "PSVITA" "GAMEBOY" "GAMEBOY COLOR" "GAMEBOY ADVANCE" "NES" "SNES" "N64" "NDS" "N3DS" "WII" "WII-U" "IPHONE")
+        (allowed-values "PC" "XBOX" "XBOX 360" "XBOX ONE" "PSX" "PS2" "PS3" "PS4" "PSP" "PSVITA" "GAMEBOY" "GAMEBOY COLOR" "GAMEBOY ADVANCE" "NES" "SNES" "N64" "NDS" "N3DS" "WII" "WII-U" "IPHONE" "No")
         (create-accessor read-write)
         )
     (single-slot duracion
@@ -72,8 +70,8 @@
 (definstances eleccion
     ([juego1] of JUEGO
         (nombre "Counter Strike: Global Offensive")
-        (genero "Accion")
-        (subgenero "FPS")
+        (genero Accion)
+        (subgenero FPS)
         (punto_vista 1)
         (multijugador "Online")
         (precio 20.00)
@@ -88,8 +86,8 @@
         )
     ([juego2] of JUEGO
         (nombre "World Of Warcraft")
-        (genero "Rol")
-        (subgenero "MMORPG")
+        (genero Rol)
+        (subgenero MMORPG)
         (punto_vista 2)
         (multijugador "Online")
         (precio 39.95)
@@ -104,8 +102,8 @@
         )
     ([juego3] of JUEGO
         (nombre "Tetris")
-        (genero "Casual")
-        (subgenero "Puzzle")
+        (genero Casual)
+        (subgenero Puzzle)
         (punto_vista 3)
         (multijugador "Local")
         (precio 00.00)
@@ -120,10 +118,10 @@
         )
     ([juego4] of JUEGO
         (nombre "My Best Friends - Cats And Dogs")
-        (genero "Simuladores")
-        (subgenero "Animales")
+        (genero Simuladores)
+        (subgenero Animales)
         (punto_vista 2)
-        ;;Si algo no aparece en la definición del juego es que no lo tiene ejemplo aqui, este no tiene multijugador
+        (multijugador "No")
         (precio 39.00)
         (edad 13)
         (mundo_abierto 0)
@@ -136,14 +134,15 @@
         )
     ([juego5] of JUEGO
         (nombre "The Evil Within")
-        (genero "Aventuras")
-        (subgenero "Terror")
+        (genero Aventuras)
+        (subgenero Terror)
         (punto_vista 2)
         (multijugador "Local")
         (precio 59.95)
         (edad 18)
         (mundo_abierto 0)
         (generacion 2014)
+        (company "No")
         (plataforma "PC" "XBOX 360" "XBOX ONE" "PS3" "PS4")
         (duracion 60)
         (descripcion "Una gran obra con supervivemcia, accion y exploracion")
@@ -151,10 +150,10 @@
         )
     ([juego6] of JUEGO
         (nombre "Fifa 2014")
-        (genero "Casual")
-        (subgenero "Deporte")
+        (genero Casual)
+        (subgenero Deporte)
         (punto_vista 2)
-        (multijugador "Online" "Local")
+        (multijugador "Ambos")
         (precio 50.95)
         (edad 18)
         (mundo_abierto 0)
@@ -167,8 +166,8 @@
         )
     ([juego7] of JUEGO
         (nombre "League Of Legends")
-        (genero "Rol")
-        (subgenero "MOBA")
+        (genero Rol)
+        (subgenero MOBA)
         (punto_vista 2)
         (multijugador "Online")
         (precio 00.00)
@@ -183,10 +182,10 @@
         )
     ([juego8] of JUEGO
         (nombre "Heavy Rain")
-        (genero "Aventuras")
-        (subgenero "Aventura grafica")
+        (genero Aventuras)
+        (subgenero Aventura_Grafica)
         (punto_vista 2)
-        ;;Si algo no aparece en la definición del juego es que no lo tiene ejemplo aqui, este no tiene multijugador
+        (multijugador "No")
         (precio 19.95)
         (edad 18)
         (mundo_abierto 1)
@@ -199,8 +198,8 @@
         )
     ([juego9] of JUEGO
         (nombre "Tekken 6")
-        (genero "Accion")
-        (subgenero "Lucha")
+        (genero Accion)
+        (subgenero Lucha)
         (punto_vista 3)
         (multijugador "Local")
         (precio 49.95)
@@ -215,8 +214,8 @@
         )
     ([juego10] of JUEGO
         (nombre "Super Mario Bros")
-        (genero "Accion")
-        (subgenero "Plataformas")
+        (genero Accion)
+        (subgenero Plataformas)
         (punto_vista 2)
         (multijugador "Local")
         (precio 00.00)
@@ -231,10 +230,10 @@
         )
     ([juego11] of JUEGO
         (nombre "La tierra media: Sombras de Mordor")
-        (genero "Aventuras")
-        (subgenero "Fantasia")
+        (genero Aventuras)
+        (subgenero Fantasia)
         (punto_vista 2)
-        ;;Si algo no aparece en la definición del juego es que no lo tiene ejemplo aqui, este no tiene multijugador
+        (multijugador "No")
         (precio 59.95)
         (edad 18)
         (mundo_abierto 1)
@@ -247,8 +246,8 @@
         )
     ([juego12] of JUEGO
         (nombre "Minecraft")
-        (genero "Rol")
-        (subgenero "MMORPG")
+        (genero Rol)
+        (subgenero MMORPG)
         (punto_vista 1,2,3)
         (multijugador "Online")
         (precio 19.95)
@@ -263,8 +262,8 @@
         )
     ([juego13] of JUEGO
         (nombre "Ryse: Son of Rome")
-        (genero "Accion")
-        (subgenero "Lucha")
+        (genero Accion)
+        (subgenero Lucha)
         (punto_vista 2)
         (multijugador "Local")
         (precio 34.95)
@@ -279,10 +278,10 @@
         )
     ([juego14] of JUEGO
         (nombre "Assassins Creed")
-        (genero "Aventura")
-        (subgenero "Historico")
+        (genero Aventura)
+        (subgenero Historico)
         (punto_vista 2)
-        (multijugador "Local, Online")
+        (multijugador "Ambos")
         (precio 64.95)
         (edad 18)
         (mundo_abierto 1)
@@ -295,8 +294,8 @@
         )
     ([juego15] of JUEGO
         (nombre "Final Fantasy VII")
-        (genero "ROL")
-        (subgenero "RPG")
+        (genero ROL)
+        (subgenero RPG)
         (punto_vista 2)
         (precio 7.00)
         (edad 13)
@@ -310,8 +309,8 @@
         )
     ([juego16] of JUEGO
         (nombre "Cooking Mama")
-        (genero "Casual")
-        (subgenero "Educativo")
+        (genero Casual)
+        (subgenero Educativo)
         (punto_vista 1)
         (multijugador "Local")
         (precio 9.99)
@@ -326,10 +325,10 @@
         )
     ([juego17] of JUEGO
         (nombre "Resident Evil")
-        (genero "Accion")
-        (subgenero "3PS")
+        (genero Accion)
+        (subgenero 3PS)
         (punto_vista 2)
-        (multijugador "Online" "Local")
+        (multijugador "Ambos")
         (precio 29.99)
         (edad 18)
         (mundo_abierto 0)
@@ -342,10 +341,10 @@
         )
     ([juego18] of JUEGO
         (nombre "Far Cry 4")
-        (genero "Accion")
-        (subgenero "FPS")
+        (genero Accion)
+        (subgenero FPS)
         (punto_vista 1)
-        (multijugador "Online" "Local")
+        (multijugador "Ambos")
         (precio 60.00)
         (edad 18)
         (mundo_abierto 1)
@@ -358,8 +357,8 @@
         )
     ([juego19] of JUEGO
         (nombre "The Witcher Battle Arena")
-        (genero "ROL")
-        (subgenero "MOBA")
+        (genero ROL)
+        (subgenero MOBA)
         (punto_vista 2)
         (precio 0.00)
         (edad 18)
@@ -373,10 +372,10 @@
         )
     ([juego20] of JUEGO
         (nombre "Guitar Hero")
-        (genero "Casual")
-        (subgenero "Musica")
+        (genero Casual)
+        (subgenero Musica)
         (punto_vista 3)
-        (multijugador "Local", "Online")
+        (multijugador "Ambos")
         (precio 26.95)
         (edad 12)
         (mundo_abierto 0)
@@ -389,8 +388,8 @@
         )
     ([juego21] of JUEGO
         (nombre "Valiant Herats: The Great War")
-        (genero "Accion")
-        (subgenero "Plataformas")
+        (genero Accion)
+        (subgenero Plataformas)
         (punto_vista 2)
         (multijugador "Local")
         (precio 00.00)
@@ -402,6 +401,150 @@
         (duracion 480)
         (descripcion "En esta aventura puzle que mezcla elementos de sigilo seguiremos el devenir de cinco personajes de diferentes nacionalidades que intentan sobrevivir a uno de los eventos más devastadores de la historia: la Primera Guerra Mundial.")
         (pagina "http://valianthearts.ubi.com/game/es-es/home/index.aspx")
+        )
+    ([juego22] of JUEGO
+        (nombre "Magic : The Gathering")
+        (genero Casual)
+        (subgenero Puzzle)
+        (punto_vista 3)
+        (multijugador "Ambos")
+        (precio 23.95)
+        (edad 13)
+        (mundo_abierto 0)
+        (generacion 2000)
+        (company "Wizard")
+        (plataforma "PC" "XBOX 360" "XBOX ONE" "PS3" "PS4")
+        (duracion -1)
+        (descripcion "Cada partida de Magic representa una batalla entre poderosos magos. Llamados planeswalkers en el juego, cada uno de estos magos es uno de los jugadores de la partida. ")
+        (pagina "http://magic.wizards.com/es")
+        )
+    ([juego23] of JUEGO
+        (nombre "Terraria")
+        (genero Casual)
+        (subgenero Puzzle)
+        (punto_vista 3)
+        (multijugador "Ambos")
+        (precio 19.95)
+        (edad 13)
+        (mundo_abierto 1)
+        (generacion 2000)
+        (company "Re-Logic")
+        (plataforma "PC")
+        (duracion -1)
+        (descripcion "Terraria es un juego de construcción que además contiene elementos de exploración y aventura como el de juegos clásicos del SNES, como por ejemplo Metroid.")
+        (pagina "http://terraria.org/")
+        )
+    ([juego24] of JUEGO
+        (nombre "Juiced 2: Hot Import Nights")
+        (genero Casual)
+        (subgenero Carreras)
+        (punto_vista 1)
+        (multijugador "Ambos")
+        (precio 53.95)
+        (edad 18)
+        (mundo_abierto 0)
+        (generacion 2000)
+        (company "THQ")
+        (plataforma "PC" "XBOX 360" "XBOX ONE" "PS3" "PS4")
+        (duracion -1)
+        (descripcion "Juego de carreras en donde encarnaras a un joven conductor encargado de hacerse el dueño de la carretera")
+        (pagina "http://juice2.com")
+        )
+    ([juego25] of JUEGO
+        (nombre "Goat Simulator")
+        (genero Simuladores)
+        (subgenero Animales)
+        (punto_vista 1)
+        (multijugador "Ambos")
+        (precio 13.95)
+        (edad 13)
+        (mundo_abierto 1)
+        (generacion 2000)
+        (company "Disclaimer")
+        (plataforma "PC")
+        (duracion -1)
+        (descripcion "Goat Simulator is the latest in goat simulation technology, bringing next-gen goat simulation to YOU. You no longer have to fantasize about being a goat, your dreams have finally come true! WASD to write history.")
+        (pagina "http://www.goat-simulator.com/")
+        )
+     ([juego26] of JUEGO
+        (nombre "Los Sims")
+        (genero Simuladores)
+        (subgenero Educativo)
+        (punto_vista 3)
+        (multijugador "Ambos")
+        (precio 43.00)
+        (edad 13)
+        (mundo_abierto 1)
+        (generacion 2000)
+        (company "EA")
+        (plataforma "PC" "PS3")
+        (duracion -1)
+        (descripcion " Juega a la vida como nunca antes. Crea nuevos Sims con inteligencia y emociones, construye hogares únicos, y controla la mente, el cuerpo y el corazón de tus Sims.")
+        (pagina "https://www.thesims.com/es_ES/")
+        )
+    ([juego27] of JUEGO
+        (nombre "Starcraft")
+        (genero Rol)
+        (subgenero RTS)
+        (punto_vista 3)
+        (multijugador "Ambos")
+        (precio 40.00)
+        (edad 18)
+        (mundo_abierto 1)
+        (generacion 2000)
+        (company "Blizzard")
+        (plataforma "PC")
+        (duracion 100)
+        (descripcion "La historia de StarCraft II se desarrolla en un universo de ciencia-ficción, repleto de personajes y lugares únicos, y en el que las personas y las situaciones con las que te encuentres a lo largo del juego tendrán un objetivo y un propósito")
+        (pagina "http://eu.battle.net/sc2/es/")
+        )
+    ([juego28] of JUEGO
+        (nombre "World Of Warcraft")
+        (genero Rol)
+        (subgenero MMORPG)
+        (punto_vista 2)
+        (multijugador "Ambos")
+        (precio 43.00)
+        (edad 13)
+        (mundo_abierto 1)
+        (generacion 2000)
+        (company "Blizzard")
+        (plataforma "PC")
+        (duracion -1)
+        (descripcion "World of Warcraft es un juego online en el que jugadores de todo el mundo asumen el papel de personajes de fantasía heroica y exploran un mundo virtual lleno de misterio, magia y aventuras sin fin. ")
+        (pagina "https://eu.battle.net/wow/es/")
+        )
+    ([juego29] of JUEGO
+        (nombre "Need For Speed")
+        (genero Casual)
+        (subgenero Carreras)
+        (punto_vista 1)
+        (multijugador "Ambos")
+        (precio 43.00)
+        (edad 13)
+        (mundo_abierto 0)
+        (generacion 2000)
+        (company "EA")
+        (plataforma "PC" "PS3" "PS4")
+        (duracion -1)
+        (descripcion "Juego de carreras clasico a la par que excitante")
+        (pagina "https://www.needforspeed.com/es_ES")
+        )
+    ([juego30] of JUEGO
+        (nombre "Fritz 13 ")
+        (genero Simuladores)
+        (subgenero Educativo)
+        (punto_vista 3)
+        (multijugador "Online")
+        (precio 43.00)
+        (edad 13)
+        (mundo_abierto 0)
+        (generacion 1900)
+        (company "No")
+        (plataforma "PC")
+        (duracion -1)
+        (descripcion "Juego educativo de ajedrez")
+        (pagina "https://Fritz13.com/es_ES/")
         )
     )
 
@@ -416,14 +559,18 @@
     (printout t "Subgenero: ")
     (printout t ?self:subgenero)
     (printout t crlf)
-    (if (> (length$ ?self:multijugador) 0) then
-        (printout t ?self:multijugador)
-    else
-        (printout t "Multijugador: No")
-        )
+    (printout t "Multijugador: ")
+    (printout t ?self:multijugador)
     (printout t crlf)
     (printout t "Precio: ")
     (printout t ?self:precio)
+    (printout t crlf)
+    (printout t "Duración: ")
+    (if (= ?self:duracion -1) then
+        (printout t "Incalculable")
+    else
+        (printout t ?self:duracion)
+        )
     (printout t crlf)
     (printout t "Descripcion: ")
     (printout t ?self:descripcion)
@@ -473,16 +620,31 @@
     ?g <- (genero_usuario (gen desconocido))
     ?sg <- (subgenero_usuario(subgen desconocido))
     =>
-    (bind ?a (ask-question "Seleccione el genero deseado (Accion|Aventura|Rol|Casual) -> " Accion Aventura Rol Casual accion aventura rol casual))
-    (if (or (eq ?a Accion)(eq ?a accion))
+    (bind ?a (ask-question "Seleccione el genero deseado (Accion|Aventuras|Rol|Casual|Simuladores) -> " Accion Aventuras Rol Casual Simuladores))
+    (if (eq ?a Accion)
     then
         (modify ?g (gen ?a))
-        (modify ?sg (subgen (ask-question "Seleccione el subgenero deseado (FPS|3PS|Plataformas|Lucha) -> " FPS 3PS Plataformas Lucha fps 3ps plataformas lucha)))
+        (modify ?sg (subgen (ask-question "Seleccione el subgenero deseado (FPS|3PS|Plataformas|Lucha) -> " FPS 3PS Plataformas Lucha)))
         )
-    (if (or (eq ?a Aventura)(eq ?a aventura))
+    (if (eq ?a Aventuras)
     then
         (modify ?g (gen ?a))
-        (modify ?sg (subgen (ask-question "Seleccione el subgenero deseado (Fantasia) -> " Fantasia fantasia)))
+        (modify ?sg (subgen (ask-question "Seleccione el subgenero deseado (Fantasia|Terror|Aventura_Grafica|Historico|RTS) -> " Fantasia Terror Aventura_Grafica Historico)))
+        )
+    (if (eq ?a Rol)
+    then
+        (modify ?g (gen ?a))
+        (modify ?sg (subgen (ask-question "Seleccione el subgenero deseado (MMORPG|MOBA|RPG) -> " MMORPG MOBA RPG RTS)))
+        )
+    (if (eq ?a Casual)
+    then
+        (modify ?g (gen ?a))
+        (modify ?sg (subgen (ask-question "Seleccione el subgenero deseado (Puzle|Deporte|Educativo|Musica|Carreras) -> " Puzle Deporte Educativo Musica Carreras)))
+        )
+    (if (eq ?a Simuladores)
+    then
+        (modify ?g (gen ?a))
+        (modify ?sg (subgen (ask-question "Seleccione el subgenero deseado (Animales|Educativo) -> " Animales Educativo)))
         )
     )
 
@@ -514,22 +676,22 @@
     ?m <- (multi (mj desconocido))
     =>
     (if (si-o-no-p "Desea que sue juego posea multijugador (s/n) -> ") then
-        (bind ?a (ask-question "Selccione modo multijugador (Online|Local) -> " online local Online Local))
-        (if (or(eq a? "local")(eq a? "Local")) then
-            (if (si-o-no-p "Desea que su juego posea tambien multijugador Online (s/n) -> ") then
-                (modify ?m (mj Local Online))
+        (bind ?a (ask-question "Selccione modo multijugador (Online|Local|Ambos) -> " Online Local Ambos))
+        (switch ?a
+            (case Local then
+                (modify ?m (mj "Local"))
                 )
-            else
-                (modify ?m (mj Local))
-        else
-            (if(si-o-no-p "Desea que su juego posea tambien multijugador Local (s/n) -> ") then
-                (modify ?m (mj Local Online))
+            (case Online then
+                (modify ?m (mj "Online"))
                 )
-            else
-                (modify ?m (mj Online))
+            (case Ambos then
+                (modify ?m (mj "Ambos"))
+                )
             )
-        )
+    else
+        (modify ?m (mj "No"))
     )
+)
 
 (deftemplate precio
     (slot pc)
@@ -576,7 +738,7 @@
     (declare (salience 5))
     ?m <- (mundo (ma desconocido))
     =>
-    (if (si-o-no-p "Desea que su juego tenga opcion de punto abierto? (s/n) -> ") then
+    (if (si-o-no-p "Desea que su juego tenga opcion de mundo abierto? (s/n) -> ") then
             (modify ?m (ma 1))
         else
             (modify ?m (ma 0))
@@ -599,61 +761,93 @@
     (modify ?g (ge ?a))
     )
 
-(deftemplate company
-    (slot com)
-    )
+;;(deftemplate company
+;;    (slot com)
+;;    )
 
-(deffacts company_fact
-    (company (com desconocido))
-    )
+;;(deffacts company_fact
+;;    (company (com desconocido))
+;;    )
 
-(defrule seleccion_company
-    (declare (salience 3))
-    ?c <- (company (com desconocido))
-    =>
-    (bind ?a (ask-question "Introduzca una compañia valida (Utilice _ para representar los espacios) -> " SEGA Capcom Electronic_Arts Rockstar_Games Nintendo Ubisoft Sony Konami Activision Blizzard Naughty_Dog Square_Enix Valve Bethesda 2K Monolith))
-    (modify ?c (com ?a))
-    )
+;;(defrule seleccion_company
+;;    (declare (salience 3))
+;;    ?c <- (company (com desconocido))
+;;    =>
+;;    (printout t "Introduzca una la compañia de se juego -> ")
+;;    (bind ?a (read))
+;;    (modify ?c (com ?a))
+;;    )
 
-(deftemplate plataforma
-    (slot plat)
-    )
+;;(deftemplate plataforma
+;;    (slot plat)
+;;    )
 
-(deffacts plataforma_fact
-    (plataforma (plat desconocido))
-    )
+;;(deffacts plataforma_fact
+;;    (plataforma (plat desconocido))
+;;    )
 
-(defrule seleccion_plataforma
-    (declare (salience 2))
-    ?p <- (plataforma (plat desconocido))
-    =>
-    (bind ?a (ask-question "Introduzca la plataforma para su juego (Utilice _ para representar los espacios) -> " PC XBOX XBOX_360 XBOX_ONE PSX PS2 PS3 PS4 PSP PSVITA GAMEBOY GAMEBOY_COLOR GAMEBOY_ADVANCE NES SNES N64 NDS N3DS WII WII-U IPHONE))
-    (modify ?p (plat ?a))
-    )
+;;(defrule seleccion_plataforma
+;;    (declare (salience 2))
+;;    ?p <- (plataforma (plat desconocido))
+;;    =>
+;;    (bind ?a (ask-question "Introduzca la plataforma para su juego (Utilice _ para representar los espacios) -> " PC XBOX XBOX_360 XBOX_ONE PSX PS2 PS3 PS4 PSP PSVITA GAMEBOY GAMEBOY_COLOR GAMEBOY_ADVANCE NES SNES N64 NDS N3DS WII WII-U IPHONE))
+;;    (modify ?p (plat ?a))
+;;    )
 
 
-(deftemplate duracion
-    (slot dur)
-    )
+;;(deftemplate duracion
+;;    (slot dur)
+;;    )
 
-(deffacts duracion_fact
-    (duracion (dur desconocido))
-    )
+;;(deffacts duracion_fact
+;;    (duracion (dur desconocido))
+;;    )
 
-(defrule seleccion_duracion
-    (declare (salience 1))
-    ?d <- (duracion (dur desconocido))
-    =>
-    (printout t "Introduzca la duracion que le gustaria que tuviera su juego -> ")
-    (bind ?a (read))
-    (modify ?d (dur ?a))
-    )
+;;(defrule seleccion_duracion
+;;    (declare (salience 1))
+;;    ?d <- (duracion (dur desconocido))
+;;    =>
+;;    (printout t "Introduzca la duracion que le gustaria que tuviera su juego -> ")
+;;    (bind ?a (read))
+;;    (modify ?d (dur ?a))
+;;    )
 
 (defrule impresion_final
-    (precio(pc ?p))
+    (multi (mj ?mj))
+    (punto_vista (pv ?pv));
+    (precio(pc ?pc));
+    (edad (ed ?ed));
+    (mundo (ma ?ma));
+    (generacion (ge ?ge));
+    ;;(company (com ?com));
+    ;;(plataforma (plat ?plat));
+    (genero_usuario (gen ?gen));
+    (subgenero_usuario (subgen ?subgen));
+    ;;(duracion (dur ?dur));
     =>
+  ;;(printout t ?mj crlf ?pv crlf ?pc crlf ?ed crlf ?ma crlf ?ge  crlf ?gen crlf ?subgen crlf)
+  (bind ?a 1)
+  (system clear)
     (do-for-all-instances ((?ju1 JUEGO))
-        (<= (send ?ju1 get-precio) ?p)
+        (and(<= (send ?ju1 get-precio) ?pc)
+            ;;(<= (send ?ju1 get-duracion) ?dur)
+            (eq (send ?ju1 get-genero) ?gen)
+            (eq (send ?ju1 get-subgenero) ?subgen)
+            ;;(eq (send ?ju1 get-plataforma) ?plat)
+            ;;(eq (send ?ju1 get-company) ?com)
+            (>= (send ?ju1 get-generacion) ?ge)
+            (= (send ?ju1 get-mundo_abierto) ?ma)
+            (= (send ?ju1 get-edad) ?ed)
+            (= (send ?ju1 get-punto_vista) ?pv)
+            (eq (send ?ju1 get-multijugador) ?mj)
+            (= ?a 1)
+            )
         (send ?ju1 imprime)
+        (if (si-o-no-p "Es el juego que buscaba? (s/n) -> ") then 
+            
+        else
+            (bind ?a 0)
+            )
         )
+    (printout t "No existen mas juegos con estas caracteristicas")
     )
