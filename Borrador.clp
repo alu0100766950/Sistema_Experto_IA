@@ -9,7 +9,7 @@
         (type STRING)
         (allowed-values "Accion" "Aventuras" "Rol" "Casual" "Simuladores")
         (create-accessor read-write)
-        )
+        
     (single-slot subgenero
         (type STRING)
         (allowed-values "FPS" "Lucha" "3PS" "Plataformas" "Fantasia" "Terror" "MMORPG" "Puzle" "Animales" "Deporte" "MOBA" "Aventura_Grafica" "Educativo" "Historico" "RPG" "Musica" "RTS" "Carreras")
@@ -546,12 +546,176 @@
         (descripcion "Juego educativo de ajedrez")
         (pagina "https://Fritz13.com/es_ES/")
         )
+    ([juego31] of JUEGO
+        (nombre "Rain")
+        (genero Casual)
+        (subgenero Puzzle)
+        (punto_vista 3)
+        (multijugador "No")
+        (precio 13.95)
+        (edad 13)
+        (mundo_abierto 0)
+        (generacion 2000)
+        (company "SCE Japan Studio")
+        (plataforma "PC")
+        (duracion 100)
+        (descripcion " un cuento en el que la lluvia es la anfitriona. Abrid el paraguas, pongámonos el chubasquero, pues la magia está a punto de caer del cielo.")
+        (pagina "http://rain.com/es")
+        )
+    ([juego32] of JUEGO
+        (nombre "formula 1")
+        (genero Casual)
+        (subgenero Carreras)
+        (punto_vista 1)
+        (multijugador "No")
+        (precio 53.00)
+        (edad 13)
+        (mundo_abierto 0)
+        (generacion 2000)
+        (company "EA")
+        (plataforma "PC" "XBOX 360" "XBOX ONE" "PS3" "PS4")
+        (duracion 300)
+        (descripcion "Juego de carreras en el que viviras la intensa accion de la formula 1!")
+        (pagina "http://www.formula1.com/")
+        )
+ ([juego33] of JUEGO
+        (nombre "Medal Of Honor")
+        (genero Accion)
+        (subgenero FPS)
+        (punto_vista 1)
+        (multijugador "Ambos")
+        (precio 59.95)
+        (edad 18)
+        (mundo_abierto 1)
+        (generacion 2000)
+        (company "EA")
+        (plataforma "PC" "XBOX 360" "XBOX ONE" "PS3" "PS4")
+        (duracion -1)
+        (descripcion " La temática de la serie siempre ha estado basada en los combates de la Segunda Guerra Mundial")
+        (pagina "http://http://www.ea.com/es/medal-of-honor-warfighter")
+        )
+
+
+    ([juego34] of JUEGO
+        (nombre "Rock Band")
+        (genero Casual)
+        (subgenero Musica)
+        (punto_vista 3)
+        (multijugador "No")
+        (precio 33.95)
+        (edad 13)
+        (mundo_abierto 0)
+        (generacion 2000)
+        (company "EA")
+        (plataforma "PC" "XBOX 360" "XBOX ONE" "PS3" "PS4")
+        (duracion -1)
+        (descripcion " Rock Band 2 permite a los jugadores consolidarse como algunos de los mejores guitarristas , bajistas , baterías y cantantes de todos los tiempos")
+        (pagina "http://http://www.ea.com/mx/rock-band-2")
+        )
+
+
+    ([juego35] of JUEGO
+        (nombre "Left For Dead")
+        (genero Accion)
+        (subgenero FPS)
+        (punto_vista 1)
+        (multijugador "Ambos")
+        (precio 00.00)
+        (edad 13)
+        (mundo_abierto 0)
+        (generacion 2000)
+        (company "Turtle Rock Studios")
+        (plataforma "PC")
+        (duracion 140)
+        (descripcion "después de una pandemia apocalíptica, la trama del videojuego enfrenta a los cuatro 
+
+protagonistas contra hordas de infectados")
+        (pagina "http://left4dead/es")
+        )
+
+
+ ([juego36] of JUEGO
+        (nombre "Halo")
+        (genero Accion)
+        (subgenero FPS)
+        (punto_vista 1)
+        (multijugador "Ambos")
+        (precio 44.95)
+        (edad 18)
+        (mundo_abierto 0)
+        (generacion 2000)
+        (company "Bungie ")
+        (plataforma "XBOX 360" "XBOX ONE")
+        (duracion 200)
+        (descripcion "videojuego de disparos en primera persona desarrollado por Bungie Studios exclusivamente para 
+
+la videoconsola Xbox 360")
+        (pagina "http://halo.com/es")
+        )
+
+
+ ([juego37] of JUEGO
+        (nombre "Civilizacion")
+        (genero Simuladores)
+        (subgenero Historico)
+        (punto_vista 3)
+        (multijugador "Ambos")
+        (precio 23.95)
+        (edad 13)
+        (mundo_abierto 1)
+        (generacion 2000)
+        (company "Sid Meier")
+        (plataforma "PC")
+        (duracion -1)
+        (descripcion "Crea tus estrategias para vencer a tus enemigos en este trepidante juego lleno de accion 
+
+aventura y aprendizajes!")
+        (pagina "http://www.civilization.com/es/")
+        )
+
+
+ ([juego38] of JUEGO
+        (nombre "Fly simulator")
+        (genero Simuladores)
+        (subgenero Deporte)
+        (punto_vista 1)
+        (multijugador "No")
+        (precio 00.00)
+        (edad 18)
+        (mundo_abierto 1)
+        (generacion 2000)
+        (company "Microsoft")
+        (plataforma "PC")
+        (duracion -1)
+        (descripcion "serie de Simuladores de vuelo por Microsoft para el sistema operativo Microsoft Windows")
+        (pagina "http://flysimulator/es")
+        )
+
+ ([juego39] of JUEGO
+        (nombre "Strife")
+        (genero Rol)
+        (subgenero MOBA)
+        (punto_vista 3)
+        (multijugador "Ambos")
+        (precio 00.00)
+        (edad 13)
+        (mundo_abierto 0)
+        (generacion 2000)
+        (company "No")
+        (plataforma "PC")
+        (duracion -1)
+        (descripcion "Copia del LOL")
+        (pagina "http://strife.com/es")
+        )
     )
 
 ;;Definicion de funcion para mostrar por pantalla
 (defmessage-handler JUEGO imprime ()
     (printout t "Titutlo: ")
     (printout t ?self:nombre)
+    (printout t crlf)
+    (printout t "Compañia: ")
+    (printout t ?self:company)
     (printout t crlf)
     (printout t "Genero: ")
     (printout t ?self:genero)
@@ -561,6 +725,9 @@
     (printout t crlf)
     (printout t "Multijugador: ")
     (printout t ?self:multijugador)
+    (printout t crlf)
+    (printout t "Plataformas soportadas: ")
+    (printout t ?self:plataforma)
     (printout t crlf)
     (printout t "Precio: ")
     (printout t ?self:precio)
@@ -644,7 +811,7 @@
     (if (eq ?a Simuladores)
     then
         (modify ?g (gen ?a))
-        (modify ?sg (subgen (ask-question "Seleccione el subgenero deseado (Animales|Educativo) -> " Animales Educativo)))
+        (modify ?sg (subgen (ask-question "Seleccione el subgenero deseado (Animales|Educativo|Historico) -> " Animales Educativo Historico)))
         )
     )
 
@@ -761,80 +928,22 @@
     (modify ?g (ge ?a))
     )
 
-;;(deftemplate company
-;;    (slot com)
-;;    )
-
-;;(deffacts company_fact
-;;    (company (com desconocido))
-;;    )
-
-;;(defrule seleccion_company
-;;    (declare (salience 3))
-;;    ?c <- (company (com desconocido))
-;;    =>
-;;    (printout t "Introduzca una la compañia de se juego -> ")
-;;    (bind ?a (read))
-;;    (modify ?c (com ?a))
-;;    )
-
-;;(deftemplate plataforma
-;;    (slot plat)
-;;    )
-
-;;(deffacts plataforma_fact
-;;    (plataforma (plat desconocido))
-;;    )
-
-;;(defrule seleccion_plataforma
-;;    (declare (salience 2))
-;;    ?p <- (plataforma (plat desconocido))
-;;    =>
-;;    (bind ?a (ask-question "Introduzca la plataforma para su juego (Utilice _ para representar los espacios) -> " PC XBOX XBOX_360 XBOX_ONE PSX PS2 PS3 PS4 PSP PSVITA GAMEBOY GAMEBOY_COLOR GAMEBOY_ADVANCE NES SNES N64 NDS N3DS WII WII-U IPHONE))
-;;    (modify ?p (plat ?a))
-;;    )
-
-
-;;(deftemplate duracion
-;;    (slot dur)
-;;    )
-
-;;(deffacts duracion_fact
-;;    (duracion (dur desconocido))
-;;    )
-
-;;(defrule seleccion_duracion
-;;    (declare (salience 1))
-;;    ?d <- (duracion (dur desconocido))
-;;    =>
-;;    (printout t "Introduzca la duracion que le gustaria que tuviera su juego -> ")
-;;    (bind ?a (read))
-;;    (modify ?d (dur ?a))
-;;    )
-
 (defrule impresion_final
     (multi (mj ?mj))
-    (punto_vista (pv ?pv));
-    (precio(pc ?pc));
-    (edad (ed ?ed));
-    (mundo (ma ?ma));
-    (generacion (ge ?ge));
-    ;;(company (com ?com));
-    ;;(plataforma (plat ?plat));
-    (genero_usuario (gen ?gen));
-    (subgenero_usuario (subgen ?subgen));
-    ;;(duracion (dur ?dur));
+    (punto_vista (pv ?pv))
+    (precio(pc ?pc))
+    (edad (ed ?ed))
+    (mundo (ma ?ma))
+    (generacion (ge ?ge))
+    (genero_usuario (gen ?gen))
+    (subgenero_usuario (subgen ?subgen))
     =>
-  ;;(printout t ?mj crlf ?pv crlf ?pc crlf ?ed crlf ?ma crlf ?ge  crlf ?gen crlf ?subgen crlf)
   (bind ?a 1)
   (system clear)
     (do-for-all-instances ((?ju1 JUEGO))
         (and(<= (send ?ju1 get-precio) ?pc)
-            ;;(<= (send ?ju1 get-duracion) ?dur)
             (eq (send ?ju1 get-genero) ?gen)
             (eq (send ?ju1 get-subgenero) ?subgen)
-            ;;(eq (send ?ju1 get-plataforma) ?plat)
-            ;;(eq (send ?ju1 get-company) ?com)
             (>= (send ?ju1 get-generacion) ?ge)
             (= (send ?ju1 get-mundo_abierto) ?ma)
             (= (send ?ju1 get-edad) ?ed)
